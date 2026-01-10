@@ -207,6 +207,27 @@ Seu perfil foi analisado com sucesso! Baseado nas suas respostas, preparamos um 
 Você está a um clique de descobrir como perder peso de forma natural, sem dietas restritivas e sem efeito sanfona. E com a garantia de perder pelo menos 9kg em uma semana!`,
         delay: 2000,
       },
+      {
+        text: `Você vai receber:
+✅ A receita do Truque da Gelatina
+✅ Vídeo com o passo a passo
+✅ Horários corretos para consumir
+
+Efeitos no corpo:
+
+Menos fome
+
+Queima de gordura localizada
+
+Metabolismo mais acelerado
+
+Corpo menos inchado
+
+Efeito semelhante ao Mounjaro, de forma natural
+
+Garanta sua receita: https://pay.cakto.com.br/ywzy9kp_719317`,
+        delay: 2000,
+      },
     ],
     replyOptions: [],
   },

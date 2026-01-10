@@ -39,7 +39,7 @@ Meu nome é Julia Martins, tenho 42 anos e, principalmente depois que tive meus 
         delay: 2000,
       },
       {
-        text: `Até que, exatamente 3 meses atrás, algo mudou completamente. Uma médica dos Estados Unidos, especialista em emagrecimento feminino, revelou uma receita simples que já vinha sendo usado por mulheres como nós há anos, sem passar fome e sem dietas restritivas. Esse método está ajudando mulheres como nós a emagrecer de forma consistente e, principalmente, manter o peso.`,
+        text: `Até que, exatamente 3 meses atrás, algo mudou completamente. Uma médica dos Estados Unidos, especialista em emagrecimento feminino, revelou o Truque da Gelatina que já vinha sendo usado por mulheres como nós há anos, sem passar fome e sem dietas restritivas. Esse método está ajudando mulheres como nós a emagrecer de forma consistente e, principalmente, manter o peso.`,
         delay: 2000,
       },
       {

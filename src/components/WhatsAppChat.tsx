@@ -14,6 +14,7 @@ interface Message {
 interface ChatStep {
   contactMessages: { text: string; delay: number }[];
   replyOptions: string[];
+  showCta?: boolean;
 }
 
 const chatFlow: ChatStep[] = [
@@ -211,25 +212,12 @@ Você está a um clique de descobrir como perder peso de forma natural, sem diet
         text: `Você vai receber:
 ✅ A receita do Truque da Gelatina
 ✅ Vídeo com o passo a passo
-✅ Horários corretos para consumir
-
-Efeitos no corpo:
-
-Menos fome
-
-Queima de gordura localizada
-
-Metabolismo mais acelerado
-
-Corpo menos inchado
-
-Efeito semelhante ao Mounjaro, de forma natural
-
-Garanta sua receita: https://pay.cakto.com.br/ywzy9kp_719317`,
+✅ Horários corretos para consumir`,
         delay: 2000,
       },
     ],
     replyOptions: [],
+    showCta: true,
   },
 ];
 
@@ -378,12 +366,17 @@ const WhatsAppChat = () => {
         </div>
       )}
 
-      {/* Conversation ended */}
-      {currentStep >= chatFlow.length - 1 && !isTyping && !showReplyOptions && messages.length > 0 && (
-        <div className="bg-card border-t border-border p-4 text-center">
-          <p className="text-muted-foreground text-sm">
-            ✨ Obrigada por participar!
-          </p>
+      {/* CTA Button */}
+      {currentStep >= chatFlow.length - 1 && !isTyping && !showReplyOptions && messages.length > 0 && chatFlow[chatFlow.length - 1].showCta && (
+        <div className="bg-card border-t border-border p-4">
+          <a
+            href="https://pay.cakto.com.br/ywzy9kp_719317"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full bg-whatsapp-header hover:bg-whatsapp-header/90 text-white font-bold py-4 px-6 rounded-xl text-center shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98]"
+          >
+            GARANTIR MINHA RECEITA
+          </a>
         </div>
       )}
     </div>

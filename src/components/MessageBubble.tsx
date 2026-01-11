@@ -12,7 +12,7 @@ const MessageBubble = ({ message, isUser, time }: MessageBubbleProps) => {
       className={`flex ${isUser ? "justify-end" : "justify-start"} px-4 py-1 message-appear`}
     >
       <div
-        className={`max-w-[85%] rounded-2xl px-3 py-2 shadow-sm relative ${
+        className={`max-w-[75%] rounded-xl px-3 py-2 shadow-sm relative ${
           isUser
             ? "bg-whatsapp-bubbleUser rounded-tr-sm"
             : "bg-whatsapp-bubbleContact rounded-tl-sm"

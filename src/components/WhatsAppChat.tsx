@@ -9,10 +9,12 @@ interface Message {
   text: string;
   isUser: boolean;
   time: string;
+  isCtaButton?: boolean;
+  ctaLink?: string;
 }
 
 interface ChatStep {
-  contactMessages: { text: string; delay: number }[];
+  contactMessages: { text: string; delay: number; isCtaButton?: boolean; ctaLink?: string }[];
   replyOptions: string[];
   showCta?: boolean;
 }
@@ -215,9 +217,15 @@ Você está a um clique de descobrir como perder peso de forma natural, sem diet
 ✅ Horários corretos para consumir`,
         delay: 2000,
       },
+      {
+        text: `GARANTIR MINHA RECEITA`,
+        delay: 1000,
+        isCtaButton: true,
+        ctaLink: "https://pay.cakto.com.br/ywzy9k",
+      },
     ],
     replyOptions: [],
-    showCta: true,
+    showCta: false,
   },
 ];
 
@@ -226,7 +234,7 @@ const WhatsAppChat = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [showReplyOptions, setShowReplyOptions] = useState(false);
-  const [pendingMessages, setPendingMessages] = useState<{ text: string; delay: number }[]>([]);
+  const [pendingMessages, setPendingMessages] = useState<{ text: string; delay: number; isCtaButton?: boolean; ctaLink?: string }[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const getCurrentTime = () => {
@@ -273,6 +281,8 @@ const WhatsAppChat = () => {
             text: nextMessage.text,
             isUser: false,
             time: getCurrentTime(),
+            isCtaButton: nextMessage.isCtaButton,
+            ctaLink: nextMessage.ctaLink,
           },
         ]);
 
@@ -343,6 +353,8 @@ const WhatsAppChat = () => {
               message={message.text}
               isUser={message.isUser}
               time={message.time}
+              isCtaButton={message.isCtaButton}
+              ctaLink={message.ctaLink}
             />
           ))}
 

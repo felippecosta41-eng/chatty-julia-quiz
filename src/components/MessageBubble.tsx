@@ -4,9 +4,26 @@ interface MessageBubbleProps {
   message: string;
   isUser: boolean;
   time: string;
+  isCtaButton?: boolean;
+  ctaLink?: string;
 }
 
-const MessageBubble = ({ message, isUser, time }: MessageBubbleProps) => {
+const MessageBubble = ({ message, isUser, time, isCtaButton, ctaLink }: MessageBubbleProps) => {
+  if (isCtaButton && ctaLink) {
+    return (
+      <div className="flex justify-start px-4 py-1 message-appear">
+        <a
+          href={ctaLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-whatsapp-header hover:bg-whatsapp-header/90 text-white font-bold py-4 px-8 rounded-xl text-center shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] max-w-[75%]"
+        >
+          {message}
+        </a>
+      </div>
+    );
+  }
+
   return (
     <div
       className={`flex ${isUser ? "justify-end" : "justify-start"} px-4 py-1 message-appear`}

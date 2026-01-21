@@ -11,10 +11,11 @@ interface Message {
   time: string;
   isCtaButton?: boolean;
   ctaLink?: string;
+  image?: string;
 }
 
 interface ChatStep {
-  contactMessages: { text: string; delay: number; isCtaButton?: boolean; ctaLink?: string }[];
+  contactMessages: { text?: string; delay: number; isCtaButton?: boolean; ctaLink?: string; image?: string }[];
   replyOptions: string[];
   showCta?: boolean;
 }
@@ -191,41 +192,54 @@ Meu nome é Julia Martins, tenho 42 anos e, principalmente depois que tive meus 
   {
     contactMessages: [
       {
-        text: `Antes de enviar seu Resultado
-
-Vou te fazer essa garantia porque sei o quanto é frustrante tentar e não ver resultado.
-Por isso, se você seguir tudo direitinho e não perder pelo menos 9kg na primeira semana, eu te envio R$100 no seu PIX, pelo o WhatsApp`,
+        text: `Antes de enviar seu Resultado.
+Vou te mostrar relatos reais, porque sei como é frustrante tentar e não ver resultado.`,
         delay: 1000,
       },
+      {
+        text: `Veja os comentários de mulheres que resgataram o amor-próprio em pouquíssimo tempo, com esse Truque.`,
+        delay: 1000,
+      },
+      {
+        image: "/attached_assets/img_0136_(8)_1768959645048.png",
+        delay: 2000,
+      },
+      {
+        image: "/attached_assets/img_0136_(10)_1768959653633.png",
+        delay: 0,
+      },
+      {
+        image: "/attached_assets/img_0136_(11)_1768959656496.png",
+        delay: 0,
+      },
     ],
-    replyOptions: ["Quero ver meu resultado, com a garantia de R$100 no PIX se eu não emagrecer."],
+    replyOptions: ["Também quero mudar meu Corpo e minha AutoEstima e minha Saúde!"],
   },
   {
     contactMessages: [
       {
-        text: `🎉Parabéns!
-
-Seu perfil foi analisado com sucesso! Baseado nas suas respostas, preparamos um plano personalizado do Truque da Gelatina especialmente para você.
-
-Você está a um clique de descobrir como perder peso de forma natural, sem dietas restritivas e sem efeito sanfona. E com a garantia de perder pelo menos 9kg em uma semana!`,
+        image: "/attached_assets/ChatGPT_Image_12_de_jan._de_2026,_03_39_51_1768959669025.png",
         delay: 2000,
       },
       {
-        text: `Você vai receber:
-✅ A receita do Truque da Gelatina
-✅ Vídeo com o passo a passo
-✅ Horários corretos para consumir`,
+        text: `Tudo o que você precisa para Voltar a se Sentir Bem ao se Olhar no Espelho, São apenas R$27,99.(Menos que um Lanche!)
+Se você deixar para depois, 2026 será apenas mais um ano igual aos outros.
+A mudança que você Deseja COMEÇA AGORA!`,
         delay: 2000,
       },
+    ],
+    replyOptions: ["Sim, Quero mudar MEU CORPO!"],
+  },
+  {
+    contactMessages: [
       {
         text: `GARANTIR MINHA RECEITA`,
-        delay: 1000,
+        delay: 500,
         isCtaButton: true,
-        ctaLink: "https://pay.cakto.com.br/ywzy9k",
+        ctaLink: "https://pay.cakto.com.br/a88x4hz_734713",
       },
     ],
     replyOptions: [],
-    showCta: false,
   },
 ];
 
@@ -234,7 +248,7 @@ const WhatsAppChat = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [showReplyOptions, setShowReplyOptions] = useState(false);
-  const [pendingMessages, setPendingMessages] = useState<{ text: string; delay: number; isCtaButton?: boolean; ctaLink?: string }[]>([]);
+  const [pendingMessages, setPendingMessages] = useState<{ text?: string; delay: number; isCtaButton?: boolean; ctaLink?: string; image?: string }[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const getCurrentTime = () => {
@@ -268,7 +282,7 @@ const WhatsAppChat = () => {
       setShowReplyOptions(false);
 
       const currentMessage = pendingMessages[0];
-      const typingDuration = Math.min(currentMessage.delay, 2000);
+      const typingDuration = currentMessage.image ? 0 : Math.min(currentMessage.delay, 2000);
 
       const timer = setTimeout(() => {
         setIsTyping(false);
@@ -278,18 +292,19 @@ const WhatsAppChat = () => {
           ...prev,
           {
             id: Date.now(),
-            text: nextMessage.text,
+            text: nextMessage.text || "",
             isUser: false,
             time: getCurrentTime(),
             isCtaButton: nextMessage.isCtaButton,
             ctaLink: nextMessage.ctaLink,
+            image: nextMessage.image,
           },
         ]);
 
         if (remainingMessages.length > 0) {
           setTimeout(() => {
             setPendingMessages(remainingMessages);
-          }, remainingMessages[0].delay - typingDuration);
+          }, Math.max(0, remainingMessages[0].delay - typingDuration));
         } else {
           setPendingMessages([]);
           setShowReplyOptions(true);
@@ -355,6 +370,7 @@ const WhatsAppChat = () => {
               time={message.time}
               isCtaButton={message.isCtaButton}
               ctaLink={message.ctaLink}
+              image={message.image}
             />
           ))}
 
@@ -375,20 +391,6 @@ const WhatsAppChat = () => {
               disabled={isTyping}
             />
           ))}
-        </div>
-      )}
-
-      {/* CTA Button */}
-      {currentStep >= chatFlow.length - 1 && !isTyping && !showReplyOptions && messages.length > 0 && chatFlow[chatFlow.length - 1].showCta && (
-        <div className="bg-card border-t border-border p-4">
-          <a
-            href="https://pay.cakto.com.br/ywzy9kp_719317"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full bg-whatsapp-header hover:bg-whatsapp-header/90 text-white font-bold py-4 px-6 rounded-xl text-center shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98]"
-          >
-            GARANTIR MINHA RECEITA
-          </a>
         </div>
       )}
     </div>

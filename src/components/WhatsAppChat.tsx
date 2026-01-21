@@ -26,7 +26,7 @@ const chatFlow: ChatStep[] = [
       {
         text: `Olá, tudo bem?
 
-Meu nome é Julia Martins, tenho 42 anos e, principalmente depois que tive meus dois filhos, passei mais de 16 anos presa em um ciclo que talvez você conheça muito bem…`,
+Meu nome é Dra Marcela, tenho 42 anos e, principalmente depois que tive meus dois filhos, passei mais de 16 anos presa em um ciclo que talvez você conheça muito bem…`,
         delay: 2000,
       },
       {
@@ -43,7 +43,7 @@ Meu nome é Julia Martins, tenho 42 anos e, principalmente depois que tive meus 
         delay: 2000,
       },
       {
-        text: `Até que, exatamente 3 meses atrás, algo mudou completamente. Uma médica dos Estados Unidos, especialista em emagrecimento feminino, revelou o Truque da Gelatina que já vinha sendo usado por mulheres como nós há anos, sem passar fome e sem dietas restritivas. Esse método está ajudando mulheres como nós a emagrecer de forma consistente e, principalmente, manter o peso.`,
+        text: `Até que, exatamente 3 meses atrás, algo mudou completamente. Uma médica dos Estados Unidos, especialista em emagrecimento feminino, revelou o Truque do Sal Rosa que já vinha sendo usado por mulheres como nós há anos, sem passar fome e sem dietas restritivas. Esse método está ajudando mulheres como nós a emagrecer de forma consistente e, principalmente, manter o peso.`,
         delay: 2000,
       },
       {
@@ -217,6 +217,14 @@ Vou te mostrar relatos reais, porque sei como é frustrante tentar e não ver re
   },
   {
     contactMessages: [
+      {
+        text: `🎉Parabéns!
+
+Seu perfil foi analisado com sucesso! Baseado nas suas respostas, preparamos um plano personalizado do Truque do Sal Rosa especialmente para você.
+
+Você está a um clique de descobrir como perder peso de forma natural, sem dietas restritivas e sem efeito sanfona. E com a garantia de perder pelo menos 9kg em uma semana!`,
+        delay: 2000,
+      },
       {
         image: "/attached_assets/ChatGPT_Image_12_de_jan._de_2026,_03_39_51_1768959669025.png",
         delay: 2000,

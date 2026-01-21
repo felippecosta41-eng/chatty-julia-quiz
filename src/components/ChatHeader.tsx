@@ -1,5 +1,4 @@
 import { ArrowLeft, Phone, Video, MoreVertical } from "lucide-react";
-import juliaAvatar from "@/assets/julia-avatar.jpg";
 
 const ChatHeader = () => {
   return (
@@ -10,15 +9,15 @@ const ChatHeader = () => {
       
       <div className="relative">
         <img
-          src={juliaAvatar}
-          alt="Julia Martins"
+          src="/attached_assets/6bfec094-f64b-45df-b023-c0467ab5d47d_1768960131776.jpg"
+          alt="Dra Marcela"
           className="w-10 h-10 rounded-full object-cover border-2 border-whatsapp-online"
         />
         <span className="absolute bottom-0 right-0 w-3 h-3 bg-whatsapp-online rounded-full border-2 border-whatsapp-header" />
       </div>
       
       <div className="flex-1 min-w-0">
-        <h1 className="font-semibold text-base truncate">Julia Martins</h1>
+        <h1 className="font-semibold text-base truncate">Dra Marcela</h1>
         <p className="text-xs text-primary-foreground/80">online</p>
       </div>
       
